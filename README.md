@@ -46,3 +46,130 @@ Sharding is a method for distributing data across multiple machines/servers to s
 #### What scenarios is MongoDB good for?
 
 #### What scenarios is it not good for?
+
+
+## MONGOBD EXERCISES
+
+#### Exercise 1
+
+#### Create a collection to store information about your favourite films. Add appropriate validation rules, then insert at least 3 documents. Practice using both .insertOne() and .insertMany(). You may want to type commands into a text editor then paste into the shell.
+
+Create database: The 'use db' command to create a database
+```
+use myfavouritefilms
+```
+
+Store Film information(create collection of documents): The 'db.database.insertMany()' is used to insert the documents into the database.
+```
+db.myfavouritefilms.insertMany([{
+  title: "Tangled",
+  director: "Nathan Greno, Byron Howard",
+  length: 100,
+  company: "Walt Disney Animation Studios"
+  },
+  {
+    title: "High School Musical",
+    director: "Kenny Ortega",
+    length: 98,
+    company: "Disney Channel Original Movies"
+  },
+  {
+    title: "Starstruck",
+    director: "Michael Grossman",
+    length: 81,
+    company: "Disney Channel Original Movies"
+  }
+])
+```
+
+#### Exercise 2
+
+#### Add a new document to the collection, add a new field to that document, remove that field and then remove the document entirely.
+
+Adding Frozen to the collection: The 'db.database.insertOne' command is used to add the Frozen document to the collection.
+````
+db.myfavouritefilms.insertOne({
+  title: "Frozen",
+  director: "Chris Buck, Jennifer Lee",
+  length: 102,
+  company: "Walt Disney Animation Studios"
+})
+````
+
+Adding a the year of the movie release as a new field in the frozen document: The 'db.database.updateOne' command and '$set' notation is used to add to the database.
+````
+db.myfavouritefilms.updateOne(
+  { title: "Frozen" },
+  { $set: {Year: 2013 } }
+)
+````
+
+Removing the newly added 'Year' field: The 'db.database.updateOne' command and '$unset' notation is used to delete from the database.
+
+````
+db.myfavouritefilms.updateOne(
+  { title: "Frozen" },
+  { $unset: {Year: "" } }
+)
+````
+
+Deleting the newly added Frozen document: The 'db.database.deleteOne' command is used to remove and delete the specified document from the collection
+````
+db.myfavouritefilms.deleteOne({ title: "Frozen" })
+````
+## STAR WARS FILES 
+
+#### Exercise 5
+
+#### Write a query that finds the Luke Skywalker document
+
+#### Return the value of name and eye_colour only, from the "chewbacca" document
+
+#### Find a way to check the species name of admiral ackbar, this is in an embedded document ("Species")
+
+
+
+#### Exercise 6 
+
+#### Write a query that gives us only the names + homeworld names of humans in the database?
+
+
+
+#### Exercise 7
+
+#### Write a query that gives us all the entries that have an eye_colour of either "yellow" or "orange"
+
+
+
+#### Exercise 8
+
+#### You can combine filters using $and or $ or write a query that filter for characters that have both blue eyes and are female.Then write a query that filters for characters that have either blue eyes or are female
+
+
+
+#### Exercise 8
+
+#### You can use comparison operators in your queries
+
+#### Write a query that finds characters with a height over 200cm
+
+#### Note, Height has been recorded as a string and there are some missing a height value entirely. Can you find out how to convert all the height strings to ints?
+
+#### Run your initial height query again to confirm your solution works.
+
+
+
+#### Exercise 9
+
+#### Experiment with the following operators. What does each do?
+
+$eq
+$gt
+$gte
+$in
+$lt
+$lte
+$ne
+$nin
+
+
