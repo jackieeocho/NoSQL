@@ -40,8 +40,10 @@ A replica set in MongoDB is a group of mongoDB processes that maintain the same 
 Sharding is a method for distributing data across multiple machines/servers to support high volume operations, it is the key feature of horizontal scaling(dividing up a large database ond allocating the shards to smaller servers, this spreads the load, making it more efficient and powerful).
 
 #### Advantages of MongoDB?
-
+- schema flexibility: allowing you to store documents in the same collection with different fields and structures.
+- scalability: It supports horizontal scaling through sharding, which distributes data across multiple machines and allows for easy scaling of read and write operations.
 #### Disadvantages of MongoDB?
+- When dealing with large volumes of diverse and dynamic data, MongoDB's scalability and flexibility are beneficial
 
 #### What scenarios is MongoDB good for?
 
@@ -122,8 +124,19 @@ db.myfavouritefilms.deleteOne({ title: "Frozen" })
 #### Exercise 5
 
 #### Write a query that finds the Luke Skywalker document
+````
+use starwars
+db.characters.findOne({ name: "Luke Skywalker" })
+````
 
 #### Return the value of name and eye_colour only, from the "chewbacca" document
+````
+use starwars
+db.characters.findOne(
+  { name: "Chewbacca" },
+  { name: 1, eye_color: 1, _id: 0 }
+)
+````
 
 #### Find a way to check the species name of admiral ackbar, this is in an embedded document ("Species")
 
